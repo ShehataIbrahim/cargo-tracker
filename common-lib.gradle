@@ -1,0 +1,19 @@
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation "org.springframework.cloud:spring-cloud-starter-stream-rabbit"
+    testImplementation "org.springframework.cloud:spring-cloud-stream-test-support"
+    runtimeOnly 'mysql:mysql-connector-java'
+    implementation "io.springfox:springfox-boot-starter:3.0.0"
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+    implementation 'com.google.guava:guava:23.0'
+    implementation "org.springframework.boot:spring-boot-starter-actuator"
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation "org.springframework.boot:spring-boot-starter-tomcat"
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation "org.springframework.boot:spring-boot-starter-jdbc"
+    implementation 'org.apache.tomcat:tomcat-jdbc:10.0.14'
+    testRuntimeOnly 'com.h2database:h2'
+}

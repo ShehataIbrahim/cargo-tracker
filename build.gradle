@@ -1,0 +1,42 @@
+buildscript {
+    ext {
+        springBootVersion = '2.6.2'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'idea'
+
+
+version = new java.util.Date().format('yyyy.MM.dd.HH.mm.ss.SSSS')
+group = 'com.streams.tracker'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+}
+ext {
+    set('springCloudVersion', "2021.0.0")
+}
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

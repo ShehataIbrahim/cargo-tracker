@@ -1,0 +1,5 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.2'
+}
+apply from: '../build.gradle'
+apply from: '../common-lib.gradle'

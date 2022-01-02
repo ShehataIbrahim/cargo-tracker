@@ -1,0 +1,8 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.2'
+}
+apply from: '../build.gradle'
+
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+}
