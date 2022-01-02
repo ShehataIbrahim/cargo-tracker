@@ -55,8 +55,9 @@ but the standard way is to have a user/password for each microservice
 	);
 
 ###RabbitMQ configurations:
-Exchange (tracker.cargobookings) -> Queue (tracker.bookingsqueue)
-Exchange (tracker.cargoroutings) -> Queue (tracker.routingqueue)
+    Exchange (tracker.booking) -> Queue (tracker.bookingqueue)
+    Exchange (tracker.routing) -> Queue (tracker.routingqueue)
+This Arrow refers to binding configuration
 
 ###Run And Test
 Run the jar using *java -jar* command

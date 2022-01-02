@@ -24,7 +24,7 @@ public class EventPublisherService {
     public void handleCargoBookedEvent(CargoBookedEvent cargoBookedEvent) {
         try {
             log.info("received event ->:{}", cargoBookedEvent);
-            eventSource.booking().send(MessageBuilder.withPayload(cargoBookedEvent).build());
+            eventSource.bookingChannel().send(MessageBuilder.withPayload(cargoBookedEvent).build());
             log.info("message sent");
         } catch (Exception ex) {
             log.error("Error while processing CargoBookedEvent", ex);
@@ -33,6 +33,6 @@ public class EventPublisherService {
 
     @TransactionalEventListener
     public void handleCargoRoutedEvent(CargoRoutedEvent cargoRoutedEvent) {
-        eventSource.routing().send(MessageBuilder.withPayload(cargoRoutedEvent).build());
+        eventSource.routingChannel().send(MessageBuilder.withPayload(cargoRoutedEvent).build());
     }
 }

@@ -16,6 +16,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+@SuppressWarnings("rawtypes")
 @Log4j2
 @RestControllerAdvice(basePackages = {"com.streams.tracker.booking"})
 @RequestMapping(produces = "application/json")

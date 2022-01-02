@@ -15,7 +15,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'idea'
 
-
+sourceSets.test.resources.srcDirs+=["src/main/resources"]
 version = new java.util.Date().format('yyyy.MM.dd.HH.mm.ss.SSSS')
 group = 'com.streams.tracker'
 sourceCompatibility = '11'

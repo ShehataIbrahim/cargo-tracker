@@ -6,3 +6,8 @@ apply from: '../build.gradle'
 dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
 }
+bootJar {
+    manifest {
+        attributes 'Start-Class': 'com.streams.tracker.servicediscovery.ServiceDiscoveryApplication'
+    }
+}

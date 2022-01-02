@@ -1,4 +1,4 @@
-package com.streams.tracker.booking.controller.mapper;
+package com.streams.tracker.booking.internal.mapper;
 
 import com.streams.tracker.booking.controller.request.BookCargoRequest;
 import com.streams.tracker.booking.domain.command.BookCargoCommand;

@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RouteCargoCommand {
-    private String cargoBookingId;
+    private String bookingId;
 }
