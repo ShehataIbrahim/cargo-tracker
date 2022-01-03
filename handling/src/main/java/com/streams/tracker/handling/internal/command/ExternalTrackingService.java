@@ -15,14 +15,14 @@ import java.util.Random;
 @Service
 public class ExternalTrackingService {
     final DiscoveryClient discovery;
+    final RestTemplate restTemplate;
 
-    public ExternalTrackingService(DiscoveryClient discovery) {
+    public ExternalTrackingService(DiscoveryClient discovery, RestTemplate restTemplate) {
         this.discovery = discovery;
+        this.restTemplate = restTemplate;
     }
 
     public boolean validateBookingTracking(BookingId bookingId) {
-
-        RestTemplate restTemplate = new RestTemplate();
         Map<String, Object> params = new HashMap<>();
         params.put("bookingId", bookingId.getBookingId());
         List<ServiceInstance> routingService = discovery.getInstances("tracking");

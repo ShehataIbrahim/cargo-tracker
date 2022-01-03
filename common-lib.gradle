@@ -27,4 +27,13 @@ task copyConfigFiles() {
         }
     }
 }
+task copyTestConfigFiles() {
+    doLast {
+        copy {
+            from '../config/common-test.properties'
+            into "./src/test/resources/"
+        }
+    }
+}
 tasks.named('compileJava') { dependsOn('copyConfigFiles') }
+tasks.named('compileTestJava') { dependsOn('copyTestConfigFiles') }

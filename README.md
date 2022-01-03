@@ -31,13 +31,22 @@ The implementation is a microservices based architecture using the below technol
 
 ### RabbitMQ configurations:
 
-  > Exchange (tracker.booking) -> Queue (tracker.bookingqueue)
-  > 
-  > Exchange (tracker.routing) -> Queue (tracker.routingqueue)
-  > 
-  > Exchange (tracker.handling) -> Queue (tracker.handlingqueue)
+> Exchange (tracker.booking) -> Queue (tracker.bookingqueue)
+>
+> Exchange (tracker.routing) -> Queue (tracker.routingqueue)
+>
+> Exchange (tracker.handling) -> Queue (tracker.handlingqueue)
 
 This Arrow refers to binding configuration
+
+### Components running
+
+> There is no running dependency between services but functionality-wise service-discovery should be started first and booking service requires routing service to assign route
+
+### Functional/Integration Test
+
+Actually for now only integration test of both booking and handling services is partially implemented The required test
+infrastructure is there and running, what comes next is some extra coding
 
 - ### Setup each Microservice separately
   #### [Booking](booking/README.md)
