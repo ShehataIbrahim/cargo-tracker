@@ -2,12 +2,12 @@ package com.streams.tracker.booking.controller.request;
 
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 public class BookCargoRequest {
     private int bookingAmount;
     private String originLocation;
     private String destLocation;
-    private LocalDate destArrivalDeadline;
+    private Date destArrivalDeadline;
 }

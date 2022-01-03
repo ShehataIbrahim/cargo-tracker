@@ -25,9 +25,17 @@ The implementation is a microservices based architecture using the below technol
   update [common.properties](config/common.properties) this file is copied to all projects resources directory before
   compileJava
 
-- ###Setup each Microservice separately
-    ####[Booking](booking/README.md)
-    ####[Handling](handling/README.md)
-    ####[Routing](routing/README.md)
-    ####[Tracking](tracking/README.md)
-    ####[Service Discovery](service-discovery/README.md)
+### RabbitMQ configurations:
+
+    Exchange (tracker.booking) -> Queue (tracker.bookingqueue)
+    Exchange (tracker.routing) -> Queue (tracker.routingqueue)
+    Exchange (tracker.handling) -> Queue (tracker.handlingqueue)
+
+This Arrow refers to binding configuration
+
+- ### Setup each Microservice separately
+  #### [Booking](booking/README.md)
+  #### [Handling](handling/README.md)
+  #### [Routing](routing/README.md)
+  #### [Tracking](tracking/README.md)
+  #### [Service Discovery](service-discovery/README.md)

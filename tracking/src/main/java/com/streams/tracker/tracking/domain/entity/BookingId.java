@@ -1,4 +1,4 @@
-package com.streams.tracker.booking.domain.aggregate;
+package com.streams.tracker.tracking.domain.entity;
 
 
 import lombok.AllArgsConstructor;
@@ -10,12 +10,11 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Embeddable
 public class BookingId implements Serializable {
 
-    @Column(name="booking_id")
+    @Column(name = "booking_id")
     private String bookingId;
-
 }

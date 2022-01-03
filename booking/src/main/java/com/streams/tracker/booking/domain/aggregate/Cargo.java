@@ -50,21 +50,13 @@ public class Cargo extends AbstractAggregateRoot<Cargo> {
         this.delivery = Delivery.derivedFrom(this.routeSpecification,
                 this.cargoRoute, LastCargoHandledEvent.EMPTY);
 
-        addDomainEvent(new
-                CargoBookedEvent(
-                new CargoBookedEventData(this.bookingId.getBookingId())));
+        addDomainEvent(new CargoBookedEvent(new CargoBookedEventData(this.bookingId.getBookingId())));
     }
 
     public void assignToRoute(CargoRoute cargoRoute) {
         this.cargoRoute = cargoRoute;
         this.delivery.setRoutingStatus(RoutingStatus.ROUTED);
-        addDomainEvent(new
-                CargoRoutedEvent(new CargoRoutedEventData(this.bookingId.getBookingId())));
-    }
-
-    public void deriveDeliveryProgress(LastCargoHandledEvent lastCargoHandledEvent) {
-        this.delivery = Delivery.derivedFrom(getRouteSpecification(), this.getCargoRoute(),
-                lastCargoHandledEvent);
+        addDomainEvent(new CargoRoutedEvent(new CargoRoutedEventData(this.bookingId.getBookingId())));
     }
 
     public void addDomainEvent(Object event) {

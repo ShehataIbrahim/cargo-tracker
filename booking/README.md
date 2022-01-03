@@ -52,11 +52,6 @@ This MS handles all booking related operations
   	`unlocode` varchar(100) DEFAULT NULL
 	);
 
-###RabbitMQ configurations:
-    Exchange (tracker.booking) -> Queue (tracker.bookingqueue)
-    Exchange (tracker.routing) -> Queue (tracker.routingqueue)
-This Arrow refers to binding configuration
-
 ###Run And Test
 Run the jar using *java -jar* command
 you can navigate the service via Swagger UI http://localhost:7060/booking/swagger-ui/#/

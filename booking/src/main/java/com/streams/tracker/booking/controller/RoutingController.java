@@ -2,8 +2,8 @@ package com.streams.tracker.booking.controller;
 
 import com.streams.tracker.booking.controller.request.RouteCargoRequest;
 import com.streams.tracker.booking.domain.aggregate.BookingId;
+import com.streams.tracker.booking.internal.assembler.RouteCargoCommandAssembler;
 import com.streams.tracker.booking.internal.command.CargoBookingCommandService;
-import com.streams.tracker.booking.internal.mapper.RouteCargoCommandMapper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +20,7 @@ public class RoutingController {
     @ResponseBody
     public BookingId routeCargo(@RequestBody RouteCargoRequest routeCargoRequest){
         log.info("route cargo > {}", routeCargoRequest);
-        cargoBookingCommandService.assignRouteToCargo(RouteCargoCommandMapper.toCommand(routeCargoRequest));
+        cargoBookingCommandService.assignRouteToCargo(RouteCargoCommandAssembler.toCommand(routeCargoRequest));
         return new BookingId(routeCargoRequest.getBookingId());
     }
 }

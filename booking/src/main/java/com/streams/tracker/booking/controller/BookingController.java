@@ -4,8 +4,8 @@ package com.streams.tracker.booking.controller;
 import com.streams.tracker.booking.controller.request.BookCargoRequest;
 import com.streams.tracker.booking.domain.aggregate.BookingId;
 import com.streams.tracker.booking.domain.aggregate.Cargo;
+import com.streams.tracker.booking.internal.assembler.BookCargoCommandAssembler;
 import com.streams.tracker.booking.internal.command.CargoBookingCommandService;
-import com.streams.tracker.booking.internal.mapper.BookCargoCommandMapper;
 import com.streams.tracker.booking.internal.query.CargoQueryService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
@@ -32,8 +32,7 @@ public class BookingController {
     @PostMapping
     @ResponseBody
     public BookingId book(@RequestBody BookCargoRequest bookCargoRequest) {
-        log.info("booking cargo > {}", bookCargoRequest);
         return cargoBookingCommandService.book(
-                BookCargoCommandMapper.toCommand(bookCargoRequest));
+                BookCargoCommandAssembler.toCommand(bookCargoRequest));
     }
 }

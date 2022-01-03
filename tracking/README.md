@@ -1,11 +1,41 @@
-#Booking Microservice
-##Brief
-This MS handles all booking related operations
-in order to run this microservice you need to set up MySql and RabbitMQ
-if you want, you can stick to MySql instance username and password,
-but the standard way is to have a user/password for each microservice
+# Tracking Microservice
 
+## Brief
 
+This MS handles all tracking related operations It consumes CargoHandledEvent and CargoRoutedEvent events to build the
+trace
 
+---
+
+## Setup
+
+### Database details:
+
+#### schema name: *trackingdb*
+
+#### Username: *tracking*
+
+#### password: *tracking*
+
+### Database Script:
+
+    CREATE SCHEMA IF NOT EXISTS `trackingdb` DEFAULT CHARACTER SET utf8 ;
+    USE `trackingdb`;
+    CREATE TABLE IF NOT EXISTS `tracking_activity` (
+	  `Id` int(11) NOT NULL AUTO_INCREMENT,
+	  `tracking_number` varchar(20) NOT NULL,
+	  `booking_id` varchar(20) DEFAULT NULL,
+	  PRIMARY KEY (`Id`)
+	);
+	
+    CREATE TABLE IF NOT EXISTS `tracking_handling_events` (
+	  `Id` int(11) NOT NULL AUTO_INCREMENT,
+	  `tracking_id` int(11) DEFAULT NULL,
+	  `event_type` varchar(225) DEFAULT NULL,
+	  `event_time` timestamp NULL DEFAULT NULL,
+	  `location_id` varchar(100) DEFAULT NULL,
+	  `voyage_number` varchar(20) DEFAULT NULL,
+	  PRIMARY KEY (`Id`)
+	);
 
 ###[Back](../README.md)
