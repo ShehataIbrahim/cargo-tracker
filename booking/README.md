@@ -1,14 +1,22 @@
-#Booking Microservice
-##Brief
+# Booking Microservice
+
+## Brief
+
 This MS handles all booking related operations
 
 ---
-##Setup
-###Database details:
-####schema name: *bookingdb*
-####Username: *booking*
-####password: *booking*
-###Database Script:
+
+## Setup
+
+### Database details:
+
+#### schema name: *bookingdb*
+
+#### Username: *booking*
+
+#### password: *booking*
+
+### Database Script:
 
     CREATE SCHEMA IF NOT EXISTS `bookingdb` DEFAULT CHARACTER SET utf8 ;
     USE `bookingdb`;
@@ -52,13 +60,13 @@ This MS handles all booking related operations
   	`unlocode` varchar(100) DEFAULT NULL
 	);
 
-###Run And Test
+### Run And Test
 Run the jar using *java -jar* command
 you can navigate the service via Swagger UI http://localhost:7060/booking/swagger-ui/#/
 
 Test the service using the below request
 
-######Create Booking
+###### Create Booking
 *POST* http://localhost:7060/booking/book
 
 JSON Body
@@ -72,7 +80,7 @@ JSON Body
 
 This returns a unique "Booking Id" which should be used as universal identifier
 
-######Booking Routing
+###### Booking Routing
 *POST* http://localhost:7060/booking/route
 
 JSON Body
@@ -81,4 +89,4 @@ JSON Body
       "bookingId": "<<BookingId>>"
     }
 
-###[Back](../README.md)
+### [Back](../README.md)
