@@ -3,3 +3,10 @@ plugins {
 }
 apply from: '../build.gradle'
 apply from: '../common-lib.gradle'
+
+
+bootJar {
+    manifest {
+        attributes 'Start-Class': 'com.streams.tracker.handling.HandlingApplication'
+    }
+}

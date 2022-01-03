@@ -65,7 +65,6 @@ public class Delivery {
     }
 
     private TransportStatus calculateTransportStatus() {
-        System.out.println("Transport Status for last event" + lastEvent.getHandlingEventType());
         if (lastEvent.getHandlingEventType() == null) {
             return TransportStatus.NOT_RECEIVED;
         }

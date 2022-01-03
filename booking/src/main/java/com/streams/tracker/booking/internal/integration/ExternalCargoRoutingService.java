@@ -16,8 +16,7 @@ import java.util.*;
 
 @Service
 public class ExternalCargoRoutingService {
-    final
-    DiscoveryClient discovery;
+    final private DiscoveryClient discovery;
 
     public ExternalCargoRoutingService(DiscoveryClient discovery) {
         this.discovery = discovery;
@@ -30,8 +29,7 @@ public class ExternalCargoRoutingService {
         params.put("origin", routeSpecification.getOrigin().getUnLocCode());
         params.put("destination", routeSpecification.getDestination().getUnLocCode());
         params.put("deadline", routeSpecification.getArrivalDeadline());
-        List<ServiceInstance> routingService = discovery.getInstances("routing" +
-                "");
+        List<ServiceInstance> routingService = discovery.getInstances("routing");
 
         ServiceInstance instance;
         switch (routingService.size()) {

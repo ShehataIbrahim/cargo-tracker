@@ -1,0 +1,241 @@
+{
+  "info": {
+    "_postman_id": "c97041bd-d541-4adf-95b2-f5c85eab6755",
+    "name": "Handling",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "/handling/receive",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"bookingId\": \"{{bookingId}}\",\r\n    \"unLocode\": \"PLKRK\",\r\n    \"handlingType\": \"RECEIVE\",\r\n    \"completionTime\": \"2022-01-01\",\r\n    \"voyageNumber\": \"\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:7160/handling/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7160",
+          "path": [
+            "handling",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/handling/load",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"bookingId\": \"{{bookingId}}\",\r\n    \"unLocode\": \"PLKRK\",\r\n    \"handlingType\": \"LOAD\",\r\n    \"completionTime\": \"2022-01-02\",\r\n    \"voyageNumber\": \"0001V\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:7160/handling/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7160",
+          "path": [
+            "handling",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/handling/unload",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"bookingId\": \"{{bookingId}}\",\r\n    \"unLocode\": \"PLWRO\",\r\n    \"handlingType\": \"UNLOAD\",\r\n    \"completionTime\": \"2022-01-02\",\r\n    \"voyageNumber\": \"0001V\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:7160/handling/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7160",
+          "path": [
+            "handling",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/handling/load2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"bookingId\": \"{{bookingId}}\",\r\n    \"unLocode\": \"PLWRO\",\r\n    \"handlingType\": \"LOAD\",\r\n    \"completionTime\": \"2022-01-02\",\r\n    \"voyageNumber\": \"0004V\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:7160/handling/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7160",
+          "path": [
+            "handling",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/handling/unload2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"bookingId\": \"{{bookingId}}\",\r\n    \"unLocode\": \"PLWAW\",\r\n    \"handlingType\": \"UNLOAD\",\r\n    \"completionTime\": \"2022-01-03\",\r\n    \"voyageNumber\": \"0004V\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:7160/handling/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7160",
+          "path": [
+            "handling",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/handling/customs",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"bookingId\": \"{{bookingId}}\",\r\n    \"unLocode\": \"PLWAW\",\r\n    \"handlingType\": \"CUSTOMS\",\r\n    \"completionTime\": \"2022-01-03\",\r\n    \"voyageNumber\": \"\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:7160/handling/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7160",
+          "path": [
+            "handling",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/handling/claim",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"bookingId\": \"{{bookingId}}\",\r\n    \"unLocode\": \"PLKRK\",\r\n    \"handlingType\": \"CLAIM\",\r\n    \"completionTime\": \"2022-01-04\",\r\n    \"voyageNumber\": \"\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:7160/handling/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7160",
+          "path": [
+            "handling",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/handling/invalid",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"bookingId\": \"${bookingId}\",\r\n    \"unLocode\": \"PLKRK\",\r\n    \"handlingType\": \"CLAIM\",\r\n    \"completionTime\": \"2022-01-04\",\r\n    \"voyageNumber\": \"\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:7160/handling/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7160",
+          "path": [
+            "handling",
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
