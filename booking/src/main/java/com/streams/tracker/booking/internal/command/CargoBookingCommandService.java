@@ -1,11 +1,11 @@
 package com.streams.tracker.booking.internal.command;
 
-import com.streams.tracker.booking.domain.aggregates.BookingId;
-import com.streams.tracker.booking.domain.aggregates.Cargo;
+import com.streams.tracker.booking.domain.aggregate.BookingId;
+import com.streams.tracker.booking.domain.aggregate.Cargo;
 import com.streams.tracker.booking.domain.command.BookCargoCommand;
 import com.streams.tracker.booking.domain.command.RouteCargoCommand;
-import com.streams.tracker.booking.domain.valueobjects.CargoRoute;
-import com.streams.tracker.booking.infrastructure.repositories.CargoRepository;
+import com.streams.tracker.booking.domain.valueobject.CargoRoute;
+import com.streams.tracker.booking.infrastructure.repository.CargoRepository;
 import com.streams.tracker.booking.internal.integration.ExternalCargoRoutingService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;

@@ -1,12 +1,12 @@
 package com.streams.tracker.booking.internal.integration;
 
-import com.streams.tracker.booking.domain.entities.Location;
+import com.streams.tracker.booking.domain.entity.Location;
 import com.streams.tracker.booking.domain.model.TransitEdge;
 import com.streams.tracker.booking.domain.model.TransitPath;
-import com.streams.tracker.booking.domain.valueobjects.CargoRoute;
-import com.streams.tracker.booking.domain.valueobjects.Leg;
-import com.streams.tracker.booking.domain.valueobjects.RouteSpecification;
-import com.streams.tracker.booking.domain.valueobjects.Voyage;
+import com.streams.tracker.booking.domain.valueobject.CargoRoute;
+import com.streams.tracker.booking.domain.valueobject.Leg;
+import com.streams.tracker.booking.domain.valueobject.RouteSpecification;
+import com.streams.tracker.booking.domain.valueobject.Voyage;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
@@ -29,7 +29,7 @@ public class ExternalCargoRoutingService {
         Map<String, Object> params = new HashMap<>();
         params.put("origin", routeSpecification.getOrigin().getUnLocCode());
         params.put("destination", routeSpecification.getDestination().getUnLocCode());
-        params.put("deadline", routeSpecification.getArrivalDeadline().toString());
+        params.put("deadline", routeSpecification.getArrivalDeadline());
         List<ServiceInstance> routingService = discovery.getInstances("routing" +
                 "");
 

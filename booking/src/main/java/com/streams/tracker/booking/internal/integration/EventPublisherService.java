@@ -1,8 +1,8 @@
 package com.streams.tracker.booking.internal.integration;
 
-import com.streams.tracker.booking.domain.event.CargoBookedEvent;
-import com.streams.tracker.booking.domain.event.CargoRoutedEvent;
 import com.streams.tracker.booking.infrastructure.mq.BookingEventSource;
+import com.streams.tracker.shared.event.CargoBookedEvent;
+import com.streams.tracker.shared.event.CargoRoutedEvent;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.messaging.support.MessageBuilder;

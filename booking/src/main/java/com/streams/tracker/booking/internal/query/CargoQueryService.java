@@ -1,9 +1,9 @@
 package com.streams.tracker.booking.internal.query;
 
 
-import com.streams.tracker.booking.domain.aggregates.BookingId;
-import com.streams.tracker.booking.domain.aggregates.Cargo;
-import com.streams.tracker.booking.infrastructure.repositories.CargoRepository;
+import com.streams.tracker.booking.domain.aggregate.BookingId;
+import com.streams.tracker.booking.domain.aggregate.Cargo;
+import com.streams.tracker.booking.infrastructure.repository.CargoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;

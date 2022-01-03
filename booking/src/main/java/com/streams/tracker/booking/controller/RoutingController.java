@@ -1,9 +1,9 @@
 package com.streams.tracker.booking.controller;
 
-import com.streams.tracker.booking.domain.aggregates.BookingId;
-import com.streams.tracker.booking.internal.mapper.RouteCargoCommandMapper;
 import com.streams.tracker.booking.controller.request.RouteCargoRequest;
+import com.streams.tracker.booking.domain.aggregate.BookingId;
 import com.streams.tracker.booking.internal.command.CargoBookingCommandService;
+import com.streams.tracker.booking.internal.mapper.RouteCargoCommandMapper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 

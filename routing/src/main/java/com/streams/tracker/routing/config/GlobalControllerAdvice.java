@@ -1,7 +1,7 @@
-package com.streams.tracker.booking.config;
+package com.streams.tracker.routing.config;
 
 
-import com.streams.tracker.booking.internal.response.BaseResponse;
+import com.streams.tracker.routing.internal.response.BaseResponse;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpStatus;
