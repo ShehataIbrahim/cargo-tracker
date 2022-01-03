@@ -15,10 +15,14 @@ The implementation is a microservices based architecture using the below technol
 ## How to setup
 - Get a running instance from mysql (either local installation - VM or docker )
     - for docker instance you can
-      > docker run -p 3306:3306 --name root -e MYSQL_ROOT_PASSWORD=root -d mysql:latest
+    
+            docker run -p 3306:3306 --name root -e MYSQL_ROOT_PASSWORD=root -d mysql:latest
+      
     - in that case you need to create user for each microservice
 - Get a running instance of RabbitMQ ...you can also have a docker container running
-  > docker run -d --hostname localhost --name my-tracker -p 15672:15672 -p 5672:5672 -p 15692:15692 rabbitmq:3-management
+
+        docker run -d --hostname localhost --name my-tracker -p 15672:15672 -p 5672:5672 -p 15692:15692 rabbitmq:3-management
+    
 - Create required exchange of type topic and bind it to the queue with a routing key to avoid any confusion, routing
   keys exist in [common.properties](config/common.properties)
 - To update the common configurations related to URLS,usernames and passwords you can
@@ -27,9 +31,11 @@ The implementation is a microservices based architecture using the below technol
 
 ### RabbitMQ configurations:
 
-    Exchange (tracker.booking) -> Queue (tracker.bookingqueue)
-    Exchange (tracker.routing) -> Queue (tracker.routingqueue)
-    Exchange (tracker.handling) -> Queue (tracker.handlingqueue)
+  > Exchange (tracker.booking) -> Queue (tracker.bookingqueue)
+  > 
+  > Exchange (tracker.routing) -> Queue (tracker.routingqueue)
+  > 
+  > Exchange (tracker.handling) -> Queue (tracker.handlingqueue)
 
 This Arrow refers to binding configuration
 
