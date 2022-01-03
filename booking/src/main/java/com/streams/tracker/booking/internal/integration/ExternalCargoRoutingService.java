@@ -7,6 +7,7 @@ import com.streams.tracker.booking.domain.valueobject.CargoRoute;
 import com.streams.tracker.booking.domain.valueobject.Leg;
 import com.streams.tracker.booking.domain.valueobject.RouteSpecification;
 import com.streams.tracker.booking.domain.valueobject.Voyage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
@@ -18,13 +19,14 @@ import java.util.*;
 public class ExternalCargoRoutingService {
     final private DiscoveryClient discovery;
 
+    @Autowired
+    RestTemplate restTemplate;
+
     public ExternalCargoRoutingService(DiscoveryClient discovery) {
         this.discovery = discovery;
     }
 
     public CargoRoute fetchRouteForSpecification(RouteSpecification routeSpecification) {
-
-        RestTemplate restTemplate = new RestTemplate();
         Map<String, Object> params = new HashMap<>();
         params.put("origin", routeSpecification.getOrigin().getUnLocCode());
         params.put("destination", routeSpecification.getDestination().getUnLocCode());

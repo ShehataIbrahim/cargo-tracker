@@ -13,8 +13,7 @@ import org.springframework.transaction.event.TransactionalEventListener;
 @Service
 @EnableBinding(BookingEventSource.class)
 public class EventPublisherService {
-    final
-    BookingEventSource eventSource;
+    final BookingEventSource eventSource;
 
     public EventPublisherService(BookingEventSource eventSource) {
         this.eventSource = eventSource;
