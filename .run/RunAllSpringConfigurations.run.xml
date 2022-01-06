@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="RunAllSpringConfigurations" type="CompoundRunConfigurationType">
+        <toRun name="BookingApplication" type="SpringBootApplicationConfigurationType"/>
+        <toRun name="HandlingApplications" type="SpringBootApplicationConfigurationType"/>
+        <toRun name="RoutingApplication" type="SpringBootApplicationConfigurationType"/>
+        <toRun name="ServiceDiscoveryApplication" type="SpringBootApplicationConfigurationType"/>
+        <toRun name="TrackingApplication" type="SpringBootApplicationConfigurationType"/>
+        <method v="2"/>
+    </configuration>
+</component>

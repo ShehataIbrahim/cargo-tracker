@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="HandlingApplications" type="SpringBootApplicationConfigurationType"
+                   factoryName="Spring Boot">
+        <module name="handling.main"/>
+        <option name="SPRING_BOOT_MAIN_CLASS" value="com.streams.tracker.handling.HandlingApplication"/>
+        <option name="ACTIVE_PROFILES" value="dev"/>
+        <option name="ALTERNATIVE_JRE_PATH"/>
+        <method v="2">
+            <option name="Make" enabled="true"/>
+        </method>
+    </configuration>
+</component>

@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="RoutingApplication" type="SpringBootApplicationConfigurationType"
+                   factoryName="Spring Boot">
+        <module name="routing.main"/>
+        <option name="SPRING_BOOT_MAIN_CLASS" value="com.streams.tracker.routing.RoutingApplication"/>
+        <option name="ALTERNATIVE_JRE_PATH"/>
+        <method v="2">
+            <option name="Make" enabled="true"/>
+        </method>
+    </configuration>
+</component>

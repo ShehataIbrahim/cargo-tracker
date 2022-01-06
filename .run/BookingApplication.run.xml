@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="BookingApplication" type="SpringBootApplicationConfigurationType"
+                   factoryName="Spring Boot">
+        <module name="booking.main"/>
+        <option name="SPRING_BOOT_MAIN_CLASS" value="com.streams.tracker.booking.BookingApplication"/>
+        <option name="ALTERNATIVE_JRE_PATH"/>
+        <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE"/>
+        <method v="2">
+            <option name="Make" enabled="true"/>
+        </method>
+    </configuration>
+</component>
