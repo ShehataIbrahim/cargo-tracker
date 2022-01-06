@@ -61,13 +61,14 @@ This MS handles all booking related operations
 	);
 
 ### Run And Test
-Run the jar using *java -jar* command
-you can navigate the service via Swagger UI http://localhost:7060/booking/swagger-ui/#/
+Run the jar using *java -jar* command you can navigate the service via Swagger
+UI [http://localhost:{randomPort}/booking/swagger-ui/#/](http://localhost:{randomPort}/booking/swagger-ui/#/)
 
 Test the service using the below request
 
 ###### Create Booking
-*POST* http://localhost:7060/booking/book
+
+*POST* [http://localhost:{randomPort}/booking/book](http://localhost:{randomPort}/booking/book)
 
 JSON Body
 
@@ -81,7 +82,8 @@ JSON Body
 This returns a unique "Booking Id" which should be used as universal identifier
 
 ###### Booking Routing
-*POST* http://localhost:7060/booking/route
+
+*POST* [http://localhost:{randomPort}/booking/route](http://localhost:{randomPort}/booking/route)
 
 JSON Body
 

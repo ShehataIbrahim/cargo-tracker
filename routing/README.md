@@ -57,8 +57,9 @@ No RabbitMQ specific configuration ... as per architecture this doesn't produce/
 ### Run And Test
 
 Run the jar using *java -jar* command you can navigate the service via Swagger
-UI http://localhost:7260/routing/swagger-ui/#/
+UI [http://localhost:{randomPort}/routing/swagger-ui/#/](http://localhost:{randomPort}/routing/swagger-ui/#/)
 
-*GET* http://localhost:7260/routing/optimalRoute?deadline=NA&destination=PLWAW&origin=PLKRK
+*
+GET* [http://localhost:{randomPort}/routing/optimalRoute?deadline=NA&destination=PLWAW&origin=PLKRK](http://localhost:{randomPort}/routing/optimalRoute?deadline=NA&destination=PLWAW&origin=PLKRK)
 
 ### [Back](../README.md)

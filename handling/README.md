@@ -33,7 +33,7 @@ This MS handles all handling related operations
 ### Run And Test
 
 Run the jar using *java -jar* command you can navigate the service via Swagger
-UI http://localhost:7160/booking/swagger-ui/#/
+UI [http://localhost:{randomPort}/booking/swagger-ui/#/](http://localhost:{randomPort}/booking/swagger-ui/#/)
 
 you can also use this [postman collection](postman/Handling.postman_collection.json)
 Test the service using the below requests in sequence
