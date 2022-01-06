@@ -7,6 +7,7 @@ import com.streams.tracker.handling.domain.valueobject.Type;
 import com.streams.tracker.handling.infrastructure.mq.EventSource;
 import com.streams.tracker.handling.infrastructure.repository.HandlingActivityRepository;
 import com.streams.tracker.shared.exception.BaseBusinessException;
+import com.streams.tracker.shared.response.BaseResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -78,8 +79,8 @@ class HandlingControllerTest {
     @Test
     void registerHandlingActivity() throws BaseBusinessException {
         HandlingActivityRegistrationRequest request = new HandlingActivityRegistrationRequest("5A75E242", "", "PLKRK", "RECEIVE", new Date());
-        Boolean result = controller.registerHandlingActivity(request);
-        assertTrue(result);
+        BaseResponse result = controller.registerHandlingActivity(request);
+        assertTrue(result.isSuccess());
         verify(channel, times(1)).send(any());
         HandlingActivity savedValue = handlingActivityRepository.findByBookingId(request.getBookingId());
         assertNotNull(savedValue);

@@ -6,6 +6,7 @@ import com.streams.tracker.handling.infrastructure.integration.ExternalTrackingS
 import com.streams.tracker.handling.internal.assembler.HandlingActivityRegistrationCommandAssembler;
 import com.streams.tracker.handling.internal.command.HandlingActivityRegistrationCommandService;
 import com.streams.tracker.shared.exception.BaseBusinessException;
+import com.streams.tracker.shared.response.BaseResponse;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -22,11 +23,11 @@ public class HandlingController {
 
     @PostMapping
     @ResponseBody
-    public Boolean registerHandlingActivity(@RequestBody HandlingActivityRegistrationRequest handlingActivityRegistrationRequest) throws BaseBusinessException {
+    public BaseResponse registerHandlingActivity(@RequestBody HandlingActivityRegistrationRequest handlingActivityRegistrationRequest) throws BaseBusinessException {
         if (externalTrackingService.validateBookingTracking(new BookingId(handlingActivityRegistrationRequest.getBookingId()))) {
             handlingActivityRegistrationCommandService.registerHandlingActivityService(HandlingActivityRegistrationCommandAssembler.toCommand(handlingActivityRegistrationRequest));
-            return true;
+            return new BaseResponse(true, "Handling activity is successfully registered");
         }
-        return false;
+        return new BaseResponse(false, "Handling activity registeration failed");
     }
 }
