@@ -1,17 +1,19 @@
 package com.streams.tracker.booking.domain.valueobject;
 
 import com.streams.tracker.booking.domain.entity.Location;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Leg {
     private static final long serialVersionUID = 1L;
@@ -43,5 +45,18 @@ public class Leg {
         this.loadTime = loadTime;
         this.unloadTime = unloadTime;
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Leg leg = (Leg) o;
+        return id != null && Objects.equals(id, leg.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

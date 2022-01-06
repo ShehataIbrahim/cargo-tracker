@@ -1,7 +1,7 @@
 package com.streams.tracker.handling.config;
 
 
-import com.streams.tracker.handling.internal.response.BaseResponse;
+import com.streams.tracker.shared.response.BaseResponse;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpStatus;
@@ -33,8 +33,8 @@ public class GlobalControllerAdvice extends ResponseEntityExceptionHandler imple
     }
 
     @RequestMapping(produces = "application/json")
-    @ExceptionHandler(Throwable.class)
-    public ResponseEntity<?> assertionException(Throwable e) {
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> assertionException(Exception e) {
         BaseResponse response = new BaseResponse();
         response.setSuccess(false);
         response.setErrorMessage(e.getMessage());

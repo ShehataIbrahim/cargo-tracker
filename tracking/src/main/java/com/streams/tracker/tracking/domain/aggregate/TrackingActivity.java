@@ -8,13 +8,19 @@ import com.streams.tracker.tracking.domain.valueobject.TrackingEvent;
 import com.streams.tracker.tracking.domain.valueobject.TrackingEventType;
 import com.streams.tracker.tracking.domain.valueobject.TrackingLocation;
 import com.streams.tracker.tracking.domain.valueobject.TrackingVoyageNumber;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.Objects;
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 @Table(name = "tracking_activity")
 public class TrackingActivity {
@@ -40,5 +46,18 @@ public class TrackingActivity {
                 new TrackingLocation(addTrackingEventCommand.getLocation()),
                 new TrackingEventType(addTrackingEventCommand.getEventType(), addTrackingEventCommand.getEventTime()));
         this.trackingActivityEvent.getTrackingEvents().add(trackingEvent);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        TrackingActivity that = (TrackingActivity) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

@@ -16,7 +16,7 @@ import java.util.UUID;
 public class AssignTrackingIdCommandService {
 
 
-    private TrackingRepository trackingRepository;
+    private final TrackingRepository trackingRepository;
 
 
     public AssignTrackingIdCommandService(TrackingRepository trackingRepository) {

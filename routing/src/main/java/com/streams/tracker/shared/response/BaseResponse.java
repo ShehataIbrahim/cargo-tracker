@@ -1,4 +1,4 @@
-package com.streams.tracker.routing.internal.response;
+package com.streams.tracker.shared.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

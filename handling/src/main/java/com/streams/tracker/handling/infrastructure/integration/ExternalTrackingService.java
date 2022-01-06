@@ -1,6 +1,7 @@
-package com.streams.tracker.handling.internal.command;
+package com.streams.tracker.handling.infrastructure.integration;
 
 import com.streams.tracker.handling.domain.valueobject.BookingId;
+import com.streams.tracker.shared.exception.BaseBusinessException;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class ExternalTrackingService {
         this.restTemplate = restTemplate;
     }
 
-    public boolean validateBookingTracking(BookingId bookingId) {
+    public boolean validateBookingTracking(BookingId bookingId) throws BaseBusinessException {
         Map<String, Object> params = new HashMap<>();
         params.put("bookingId", bookingId.getBookingId());
         List<ServiceInstance> routingService = discovery.getInstances("tracking");
@@ -30,7 +31,7 @@ public class ExternalTrackingService {
         ServiceInstance instance;
         switch (routingService.size()) {
             case 0:
-                throw new RuntimeException("Tracking service is down now");
+                throw new BaseBusinessException("Tracking service is down now");
             case 1:
                 instance = routingService.get(0);
                 break;
@@ -39,8 +40,10 @@ public class ExternalTrackingService {
                 instance = routingService.get(rand.nextInt(routingService.size()));
         }
         try {
+            if (instance == null || instance.getUri() == null)
+                throw new BaseBusinessException("Tracking service running host can't be retrieved");
             restTemplate.getForObject(
-                    String.format("http://%s:%d/tracking/?bookingId={bookingId}", instance.getHost(), instance.getPort()),
+                    String.format("%s/tracking/?bookingId={bookingId}", instance.getUri().toString()),
                     Object.class, params);
             return true;
         } catch (HttpStatusCodeException e) {

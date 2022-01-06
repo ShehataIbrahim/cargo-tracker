@@ -2,16 +2,18 @@ package com.streams.tracker.routing.domain.aggregate;
 
 import com.streams.tracker.routing.domain.valueobject.Schedule;
 import com.streams.tracker.routing.domain.valueobject.VoyageNumber;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Voyage {
 
@@ -26,5 +28,16 @@ public class Voyage {
     @Embedded
     private VoyageNumber voyageNumber;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Voyage voyage = (Voyage) o;
+        return id != null && Objects.equals(id, voyage.id);
+    }
 
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

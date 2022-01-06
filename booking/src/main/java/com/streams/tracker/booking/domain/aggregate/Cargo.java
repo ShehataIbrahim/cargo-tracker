@@ -7,18 +7,18 @@ import com.streams.tracker.shared.event.CargoBookedEvent;
 import com.streams.tracker.shared.event.CargoRoutedEvent;
 import com.streams.tracker.shared.event.data.CargoBookedEventData;
 import com.streams.tracker.shared.event.data.CargoRoutedEventData;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 import org.springframework.data.domain.AbstractAggregateRoot;
 
 import javax.persistence.*;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
 @Entity
 public class Cargo extends AbstractAggregateRoot<Cargo> {
     @Id
@@ -63,4 +63,16 @@ public class Cargo extends AbstractAggregateRoot<Cargo> {
         registerEvent(event);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Cargo cargo = (Cargo) o;
+        return id != null && Objects.equals(id, cargo.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

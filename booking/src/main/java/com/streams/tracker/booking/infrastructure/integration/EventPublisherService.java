@@ -1,4 +1,4 @@
-package com.streams.tracker.booking.internal.integration;
+package com.streams.tracker.booking.infrastructure.integration;
 
 import com.streams.tracker.booking.infrastructure.mq.BookingEventSource;
 import com.streams.tracker.shared.event.CargoBookedEvent;
@@ -13,7 +13,7 @@ import org.springframework.transaction.event.TransactionalEventListener;
 @Service
 @EnableBinding(BookingEventSource.class)
 public class EventPublisherService {
-    final BookingEventSource eventSource;
+    private final BookingEventSource eventSource;
 
     public EventPublisherService(BookingEventSource eventSource) {
         this.eventSource = eventSource;

@@ -7,17 +7,21 @@ import com.streams.tracker.handling.domain.valueobject.Type;
 import com.streams.tracker.handling.domain.valueobject.VoyageNumber;
 import com.streams.tracker.shared.event.CargoHandledEvent;
 import com.streams.tracker.shared.event.data.CargoHandledEventData;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.Hibernate;
 import org.springframework.data.domain.AbstractAggregateRoot;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
-@Data
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 @NamedQuery(name = "HandlingActivity.findByBookingId",
         query = "Select e from HandlingActivity e where e.bookingId.bookingId = :bookingId")
@@ -91,5 +95,18 @@ public class HandlingActivity extends AbstractAggregateRoot<HandlingActivity> {
 
     public void addDomainEvent(Object event) {
         registerEvent(event);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        HandlingActivity that = (HandlingActivity) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

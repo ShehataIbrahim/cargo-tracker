@@ -1,4 +1,4 @@
-package com.streams.tracker.tracking.internal.integration;
+package com.streams.tracker.tracking.infrastructure.integration;
 
 import com.streams.tracker.shared.event.CargoRoutedEvent;
 import com.streams.tracker.tracking.infrastructure.mq.RoutingBinding;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @EnableBinding(RoutingBinding.class)
 public class CargoRoutedEventHandler {
 
-    private AssignTrackingIdCommandService assignTrackingIdCommandService;
+    private final AssignTrackingIdCommandService assignTrackingIdCommandService;
 
     public CargoRoutedEventHandler(AssignTrackingIdCommandService assignTrackingIdCommandService) {
         this.assignTrackingIdCommandService = assignTrackingIdCommandService;

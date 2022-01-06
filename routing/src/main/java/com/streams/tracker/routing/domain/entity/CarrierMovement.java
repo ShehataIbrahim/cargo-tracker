@@ -2,16 +2,18 @@ package com.streams.tracker.routing.domain.entity;
 
 
 import com.streams.tracker.routing.domain.valueobject.Location;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "carrier_movement")
 public class CarrierMovement {
@@ -40,5 +42,16 @@ public class CarrierMovement {
         this.arrivalLocation = arrivalLocation;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        CarrierMovement that = (CarrierMovement) o;
+        return id != null && Objects.equals(id, that.id);
+    }
 
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

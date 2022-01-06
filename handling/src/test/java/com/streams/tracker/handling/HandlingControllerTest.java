@@ -6,6 +6,7 @@ import com.streams.tracker.handling.domain.agregate.HandlingActivity;
 import com.streams.tracker.handling.domain.valueobject.Type;
 import com.streams.tracker.handling.infrastructure.mq.EventSource;
 import com.streams.tracker.handling.infrastructure.repository.HandlingActivityRepository;
+import com.streams.tracker.shared.exception.BaseBusinessException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +23,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
@@ -55,13 +58,14 @@ class HandlingControllerTest {
     ServiceInstance serviceInstanceMock;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws URISyntaxException {
         when(eventSource.handling()).thenReturn(channel);
         when(channel.send(any())).thenReturn(true);
+        //noinspection unchecked
         when(restTemplate.getForObject(anyString(), any(), any(Map.class))).thenReturn("Done");
         when(discoveryClient.getInstances(anyString())).thenReturn(Collections.singletonList(serviceInstanceMock));
-        when(serviceInstanceMock.getHost()).thenReturn("localhost");
-        when(serviceInstanceMock.getPort()).thenReturn(8080);
+        when(serviceInstanceMock.getUri()).thenReturn(new URI("localhost"));
+
     }
 
     @Test
@@ -72,7 +76,7 @@ class HandlingControllerTest {
     }
 
     @Test
-    void registerHandlingActivity() {
+    void registerHandlingActivity() throws BaseBusinessException {
         HandlingActivityRegistrationRequest request = new HandlingActivityRegistrationRequest("5A75E242", "", "PLKRK", "RECEIVE", new Date());
         Boolean result = controller.registerHandlingActivity(request);
         assertTrue(result);

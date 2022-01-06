@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/optimalRoute")
 public class RoutingController {
 
 
@@ -22,7 +22,7 @@ public class RoutingController {
     }
 
     //TODO enhance implementation by considering deadline value
-    @GetMapping(path = "/optimalRoute")
+    @GetMapping
     @ResponseBody
     public TransitPath findOptimalRoute(
             @RequestParam("origin") String originUnLocode,

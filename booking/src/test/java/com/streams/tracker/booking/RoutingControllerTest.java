@@ -9,6 +9,7 @@ import com.streams.tracker.booking.domain.model.TransitEdge;
 import com.streams.tracker.booking.domain.model.TransitPath;
 import com.streams.tracker.booking.domain.valueobject.RoutingStatus;
 import com.streams.tracker.booking.domain.valueobject.TransportStatus;
+import com.streams.tracker.shared.exception.BaseBusinessException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -24,10 +25,12 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -52,12 +55,12 @@ class RoutingControllerTest {
     ServiceInstance serviceInstanceMock;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws URISyntaxException {
 
+        //noinspection unchecked
         when(restTemplate.getForObject(anyString(), any(), any(Map.class))).thenReturn(preparePath());
         when(discoveryClient.getInstances(anyString())).thenReturn(Collections.singletonList(serviceInstanceMock));
-        when(serviceInstanceMock.getHost()).thenReturn("localhost");
-        when(serviceInstanceMock.getPort()).thenReturn(8080);
+        when(serviceInstanceMock.getUri()).thenReturn(new URI("localhost"));
 
     }
 
@@ -71,7 +74,7 @@ class RoutingControllerTest {
     }
 
     @Test
-    void routeCargo() {
+    void routeCargo() throws BaseBusinessException {
         RouteCargoRequest request = new RouteCargoRequest();
         request.setBookingId("6840966B");
         BookingId result = controller.routeCargo(request);

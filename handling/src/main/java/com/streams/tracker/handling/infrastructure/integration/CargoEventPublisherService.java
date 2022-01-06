@@ -1,4 +1,4 @@
-package com.streams.tracker.handling.internal.integration;
+package com.streams.tracker.handling.infrastructure.integration;
 
 import com.streams.tracker.handling.infrastructure.mq.EventSource;
 import com.streams.tracker.shared.event.CargoHandledEvent;

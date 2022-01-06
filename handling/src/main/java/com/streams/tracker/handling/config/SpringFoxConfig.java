@@ -2,6 +2,7 @@ package com.streams.tracker.handling.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -13,6 +14,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import java.util.Arrays;
 import java.util.List;
 
+@Profile("!test")
 @Configuration
 public class SpringFoxConfig {
     @Bean

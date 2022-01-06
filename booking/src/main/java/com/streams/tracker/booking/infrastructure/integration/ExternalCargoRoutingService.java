@@ -1,4 +1,4 @@
-package com.streams.tracker.booking.internal.integration;
+package com.streams.tracker.booking.infrastructure.integration;
 
 import com.streams.tracker.booking.domain.entity.Location;
 import com.streams.tracker.booking.domain.model.TransitEdge;
@@ -7,6 +7,7 @@ import com.streams.tracker.booking.domain.valueobject.CargoRoute;
 import com.streams.tracker.booking.domain.valueobject.Leg;
 import com.streams.tracker.booking.domain.valueobject.RouteSpecification;
 import com.streams.tracker.booking.domain.valueobject.Voyage;
+import com.streams.tracker.shared.exception.BaseBusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -26,7 +27,7 @@ public class ExternalCargoRoutingService {
         this.discovery = discovery;
     }
 
-    public CargoRoute fetchRouteForSpecification(RouteSpecification routeSpecification) {
+    public CargoRoute fetchRouteForSpecification(RouteSpecification routeSpecification) throws BaseBusinessException {
         Map<String, Object> params = new HashMap<>();
         params.put("origin", routeSpecification.getOrigin().getUnLocCode());
         params.put("destination", routeSpecification.getDestination().getUnLocCode());
@@ -36,7 +37,7 @@ public class ExternalCargoRoutingService {
         ServiceInstance instance;
         switch (routingService.size()) {
             case 0:
-                throw new RuntimeException("Routing service is down now");
+                throw new BaseBusinessException("Routing service is down now");
             case 1:
                 instance = routingService.get(0);
                 break;
@@ -45,7 +46,7 @@ public class ExternalCargoRoutingService {
                 instance = routingService.get(rand.nextInt(routingService.size()));
         }
         TransitPath transitPath = restTemplate.getForObject(
-                String.format("http://%s:%d/routing/optimalRoute?origin={origin}&destination={destination}&deadline={deadline}", instance.getHost(), instance.getPort()),
+                String.format("%s/routing/optimalRoute?origin={origin}&destination={destination}&deadline={deadline}", instance.getUri().toString()),
                 TransitPath.class, params);
 
         if (transitPath != null && transitPath.getTransitEdges() != null) {

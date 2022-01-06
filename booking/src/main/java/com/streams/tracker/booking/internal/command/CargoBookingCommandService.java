@@ -5,8 +5,9 @@ import com.streams.tracker.booking.domain.aggregate.Cargo;
 import com.streams.tracker.booking.domain.command.BookCargoCommand;
 import com.streams.tracker.booking.domain.command.RouteCargoCommand;
 import com.streams.tracker.booking.domain.valueobject.CargoRoute;
+import com.streams.tracker.booking.infrastructure.integration.ExternalCargoRoutingService;
 import com.streams.tracker.booking.infrastructure.repository.CargoRepository;
-import com.streams.tracker.booking.internal.integration.ExternalCargoRoutingService;
+import com.streams.tracker.shared.exception.BaseBusinessException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +32,7 @@ public class CargoBookingCommandService {
         return new BookingId(command.getBookingId());
     }
 
-    public void assignRouteToCargo(RouteCargoCommand command) {
+    public void assignRouteToCargo(RouteCargoCommand command) throws BaseBusinessException {
         Cargo cargo = cargoRepository.findByBookingId(
                 new BookingId(command.getBookingId()));
         CargoRoute cargoRoute = externalCargoRoutingService
