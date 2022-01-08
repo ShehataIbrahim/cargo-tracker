@@ -20,7 +20,8 @@ This MS handles all cargo routing related operations
 
     CREATE SCHEMA IF NOT EXISTS `routingdb` DEFAULT CHARACTER SET utf8 ;
     USE `routingdb`;
-	
+    CREATE USER 'routing'@'%' IDENTIFIED BY 'routing';
+    GRANT ALL PRIVILEGES ON routingdb.* TO 'routing'@'%';
 	
 	CREATE TABLE IF NOT EXISTS `voyage` (
   	`Id` int(11) NOT NULL AUTO_INCREMENT,

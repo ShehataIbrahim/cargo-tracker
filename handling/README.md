@@ -20,6 +20,8 @@ This MS handles all handling related operations
 
 	CREATE SCHEMA IF NOT EXISTS `handlingdb` DEFAULT CHARACTER SET utf8 ;
 	USE `handlingdb`;
+    CREATE USER 'handling'@'%' IDENTIFIED BY 'handling';
+    GRANT ALL PRIVILEGES ON handlingdb.* TO 'handling'@'%';
 	CREATE TABLE IF NOT EXISTS `handling_activity` (
 	  `id` int(11) NOT NULL AUTO_INCREMENT,
 	  `event_completion_time` timestamp NULL DEFAULT NULL,

@@ -21,6 +21,8 @@ trace
 
     CREATE SCHEMA IF NOT EXISTS `trackingdb` DEFAULT CHARACTER SET utf8 ;
     USE `trackingdb`;
+    CREATE USER 'tracking'@'%' IDENTIFIED BY 'tracking';
+    GRANT ALL PRIVILEGES ON trackingdb.* TO 'tracking'@'%';
     CREATE TABLE IF NOT EXISTS `tracking_activity` (
 	  `Id` int(11) NOT NULL AUTO_INCREMENT,
 	  `tracking_number` varchar(20) NOT NULL,

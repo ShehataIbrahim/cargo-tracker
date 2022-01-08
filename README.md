@@ -16,7 +16,7 @@ The implementation is a microservices based architecture using the below technol
 - Get a running instance from mysql (either local installation - VM or docker )
     - for docker instance you can
     
-            docker run -p 3306:3306 --name root -e MYSQL_ROOT_PASSWORD=root -d mysql:latest
+            docker run -d --name cargo_db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:latest
       
     - in that case you need to create user for each microservice
 - Get a running instance of RabbitMQ ...you can also have a docker container running

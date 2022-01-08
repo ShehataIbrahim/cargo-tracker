@@ -20,6 +20,8 @@ This MS handles all booking related operations
 
     CREATE SCHEMA IF NOT EXISTS `bookingdb` DEFAULT CHARACTER SET utf8 ;
     USE `bookingdb`;
+    CREATE USER 'booking'@'%' IDENTIFIED BY 'booking';
+    GRANT ALL PRIVILEGES ON bookingdb.* TO 'booking'@'%';
     CREATE TABLE IF NOT EXISTS `cargo` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `booking_id` varchar(20) NOT NULL,
