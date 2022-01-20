@@ -1,5 +1,7 @@
+//file:noinspection GrUnresolvedAccess
 buildscript {
     ext {
+        //noinspection GroovyAssignabilityCheck
         springBootVersion = '2.6.2'
     }
     repositories {
@@ -14,8 +16,9 @@ apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'idea'
-version = new java.util.Date().format('yyyy.MM.dd.HH.mm.ss.SSSS')
+version = new Date().format 'yyyy.MM.dd.HH.mm.ss.SSSS'
 group = 'com.streams.tracker'
+//noinspection GroovyUnusedAssignment
 sourceCompatibility = '11'
 
 repositories {

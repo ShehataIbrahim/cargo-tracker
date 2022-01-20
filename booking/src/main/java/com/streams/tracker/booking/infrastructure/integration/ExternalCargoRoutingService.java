@@ -14,7 +14,11 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
 public class ExternalCargoRoutingService {
@@ -50,12 +54,7 @@ public class ExternalCargoRoutingService {
                 TransitPath.class, params);
 
         if (transitPath != null && transitPath.getTransitEdges() != null) {
-            List<Leg> legs = new ArrayList<>(transitPath.getTransitEdges().size());
-            for (TransitEdge edge : transitPath.getTransitEdges()) {
-                legs.add(toLeg(edge));
-            }
-
-            return new CargoRoute(legs);
+            return new CargoRoute(transitPath.getTransitEdges().stream().map(this::toLeg).collect(Collectors.toList()));
         } else
             return new CargoRoute();
     }

@@ -12,7 +12,7 @@ The implementation is a microservices based architecture using the below technol
 ![](Architecture.png)
 ## How to import
 > #####Import as either gradle project or Intellij Project "From Existing Sources"
-## How to setup
+## How to set up
 - Get a running instance from mysql (either local installation - VM or docker )
     - for docker instance you can
     
