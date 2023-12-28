@@ -9,7 +9,7 @@ The implementation is a microservices based architecture using the below technol
 - Eureka Server as Discovery service
 
 ##Architecture highlight 
-![](Architecture.png)
+![](src/main/resources/Architecture.svg)
 ## How to import
 > #####Import as either gradle project or Intellij Project "From Existing Sources"
 ## How to set up
